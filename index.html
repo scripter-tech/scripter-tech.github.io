@@ -1,41 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YouTube Video Gallery</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>YouTube Clone - Punjabi & Haryanvi</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <h1>YouTube Video Gallery</h1>
-    <div id="video-gallery"></div>
+  <header>
+    <h1>🎵 Punjabi & Haryanvi Music</h1>
+    <input type="text" id="search-input" placeholder="Search for songs..."/>
+    <button onclick="searchVideos()">Search</button>
+  </header>
+  <main id="video-container"></main>
 
-    <script>
-        // Fetch the JSON file containing YouTube video IDs
-        fetch('videos.json')
-            .then(response => response.json())
-            .then(data => {
-                const videoGallery = document.getElementById('video-gallery');
-                
-                // Loop through each video and create an iframe for it
-                data.videos.forEach(video => {
-                    const iframe = document.createElement('iframe');
-                    iframe.width = "560";
-                    iframe.height = "315";
-                    iframe.src = `https://www.youtube.com/embed/${video.id}`;
-                    iframe.frameBorder = "0";
-                    iframe.allow = "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture";
-                    iframe.allowFullscreen = true;
-
-                    const title = document.createElement('h3');
-                    title.textContent = video.title;
-
-                    videoGallery.appendChild(title);
-                    videoGallery.appendChild(iframe);
-                });
-            })
-            .catch(error => {
-                console.error('Error loading video data:', error);
-            });
-    </script>
+  <script src="script.js"></script>
 </body>
 </html>
